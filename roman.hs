@@ -36,8 +36,6 @@ divDec x dec =
     else
         repeatRom (getRom (head dec)) (div x (head dec)) ++ divDec (mod x (head dec)) (tail dec)
 
-toRoman x =
-    if 1 <= x && x <= 3999 then
-        divDec x decimal
-    else
-        ""
+toRoman x
+    | 1 <= x && x <= 3999 = divDec x decimal
+    | otherwise = ""
