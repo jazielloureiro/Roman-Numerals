@@ -28,13 +28,11 @@ repeatRom r i =
     else
         r ++ repeatRom r (i - 1)
 
-divDec x dec =
-    if x == 0 then
-        ""
-    else if div x (head dec) == 0 then
-        divDec x (tail dec)
-    else
-        repeatRom (getRom (head dec)) (div x (head dec)) ++ divDec (mod x (head dec)) (tail dec)
+divDec 0 _ = ""
+divDec x (d:ds)
+    | q == 0 = divDec x ds
+    | otherwise = repeatRom (getRom d) q ++ divDec (mod x d) ds
+    where q = div x d
 
 toRoman x
     | 1 <= x && x <= 3999 = divDec x decimal
