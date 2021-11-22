@@ -22,11 +22,8 @@ toDecimal x = sum (toDecList x)
 
 getRom d = roman !! getIndex d decimal
 
-repeatRom r i =
-    if i == 0 then
-        ""
-    else
-        r ++ repeatRom r (i - 1)
+repeatRom r 0 = ""
+repeatRom r i = r ++ repeatRom r (i - 1)
 
 divDec 0 _ = ""
 divDec x (d:ds)
