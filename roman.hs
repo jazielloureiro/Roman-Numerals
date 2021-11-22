@@ -8,15 +8,15 @@ getIndex x list = fromJust (elemIndex x list)
 
 getDec r = decimal !! getIndex r roman
 
-toDecList str =
-    if null str then
-        []
-    else if elem (take 2 str) roman then
-        getDec (take 2 str) : toDecList (drop 2 str)
-    else if elem (take 1 str) roman then
-        getDec (take 1 str) : toDecList (drop 1 str)
-    else
-        toDecList (drop 1 str)
+toDecList "" = []
+toDecList rom
+    | elem fstTwo roman = getDec fstTwo : toDecList dropTwo
+    | elem fstOne roman = getDec fstOne : toDecList dropOne
+    | otherwise = toDecList dropOne
+    where fstTwo = take 2 rom
+          fstOne = take 1 rom
+          dropTwo = drop 2 rom
+          dropOne = drop 1 rom
 
 toDecimal x = sum (toDecList x)
 
