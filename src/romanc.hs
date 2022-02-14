@@ -11,8 +11,8 @@ help progName = do
 
 operateArgs progName args
     | length args /= 1 || elem a ["-h", "--help"] = help progName
-    | isDec a = putStrLn $ toRoman (read a :: Int)
-    | otherwise = print $ toDecimal a
+    | isDec a = putStrLn $ decToRom (read a :: Integer)
+    | otherwise = print $ romToDec a
     where a = args !! 0
 
 main = do
