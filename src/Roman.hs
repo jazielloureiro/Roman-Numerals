@@ -1,3 +1,5 @@
+module Roman (toDecimal, toRoman) where
+
 import Data.List
 import Data.Maybe
 
