@@ -28,10 +28,7 @@ repeatRom r 0 = ""
 repeatRom r i = r ++ repeatRom r (i - 1)
 
 divDec 0 _ = ""
-divDec x (d:ds)
-    | q == 0 = divDec x ds
-    | otherwise = repeatRom (getRom d) q ++ divDec (mod x d) ds
-    where q = div x d
+divDec x (d:ds) = repeatRom (getRom d) (div x d) ++ divDec (mod x d) ds
 
 decToRom x
     | 1 <= x && x <= 3999 = divDec x decimal
