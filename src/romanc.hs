@@ -14,3 +14,8 @@ operateArgs progName args
     | isDec a = putStrLn $ toRoman (read a :: Int)
     | otherwise = print $ toDecimal a
     where a = args !! 0
+
+main = do
+    progName <- getProgName
+    args <- getArgs
+    operateArgs progName args 
