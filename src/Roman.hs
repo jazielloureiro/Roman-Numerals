@@ -1,4 +1,4 @@
-module Roman (toDecimal, toRoman) where
+module Roman (romToDec, decToRom) where
 
 import Data.List
 import Data.Maybe
@@ -20,7 +20,7 @@ toDecList rom
           dropTwo = drop 2 rom
           dropOne = drop 1 rom
 
-toDecimal x = sum (toDecList x)
+romToDec x = sum (toDecList x)
 
 getRom d = roman !! getIndex d decimal
 
@@ -33,6 +33,6 @@ divDec x (d:ds)
     | otherwise = repeatRom (getRom d) q ++ divDec (mod x d) ds
     where q = div x d
 
-toRoman x
+decToRom x
     | 1 <= x && x <= 3999 = divDec x decimal
     | otherwise = ""
