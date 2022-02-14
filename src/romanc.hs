@@ -8,3 +8,9 @@ help progName = do
     putStrLn $ "Usage:"
     putStrLn $ "  " ++ progName ++ " <input>"
     putStrLn $ "  " ++ progName ++ " [-h | --help]"
+
+operateArgs progName args
+    | length args /= 1 || elem a ["-h", "--help"] = help progName
+    | isDec a = putStrLn $ toRoman (read a :: Int)
+    | otherwise = print $ toDecimal a
+    where a = args !! 0
