@@ -7,7 +7,9 @@ isDec (x:xs) = elem x ['0'..'9'] && isDec xs
 help progName = do
     putStrLn $ "Usage:"
     putStrLn $ "  " ++ progName ++ " <input>"
-    putStrLn $ "  " ++ progName ++ " [-h | --help]"
+    putStrLn $ "  " ++ progName ++ " [-h | --help]\n"
+    putStrLn $ "Argument:"
+    putStrLn $ "  input: A roman numeral or an integer"
 
 operateArgs progName args
     | length args /= 1 || elem a ["-h", "--help"] = help progName
